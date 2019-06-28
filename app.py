@@ -1,6 +1,6 @@
 import requests
 from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy 
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -16,7 +16,7 @@ class City(db.Model):
 def index():
     if request.method == 'POST':
         new_city = request.form.get('city')
-        
+
         if new_city:
             new_city_obj = City(name=new_city)
 
@@ -44,3 +44,6 @@ def index():
 
 
     return render_template('weather.html', weather_data=weather_data)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000, debug=True)
